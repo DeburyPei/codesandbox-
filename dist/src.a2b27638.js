@@ -28952,12 +28952,6 @@ var _client = _interopRequireDefault(require("react-dom/client"));
 require("./index.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -28973,7 +28967,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "App"
-  }, "\u7238\u7238", /*#__PURE__*/_react.default.createElement(Son, null));
+  }, "\u7238\u7238", /*#__PURE__*/_react.default.createElement(Son, {
+    messageForSon: "\u513F\u5B50\u4F60\u597D"
+  }));
 }
 var Son = /*#__PURE__*/function (_React$Component) {
   _inherits(Son, _React$Component);
@@ -28997,32 +28993,21 @@ var Son = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "Son"
-      }, "\u513F\u5B50 n:", this.state.n, /*#__PURE__*/_react.default.createElement("button", {
-        onClick: function onClick() {
-          return _this2.add();
-        }
-      }, "+1"), /*#__PURE__*/_react.default.createElement(GrandSon, null));
+      }, "\u513F\u5B50 message ", this.props.messageForSon, /*#__PURE__*/_react.default.createElement(GrandSon, {
+        messageForGrandSon: "\u5B59\u5B50\u4F60\u597D\u54C8\u54C8\u54C8\u54C8"
+      }));
     }
   }]);
   return Son;
 }(_react.default.Component);
-var GrandSon = function GrandSon() {
-  var _React$useState = _react.default.useState(0),
-    _React$useState2 = _slicedToArray(_React$useState, 2),
-    n = _React$useState2[0],
-    setN = _React$useState2[1];
+var GrandSon = function GrandSon(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "GrandSon"
-  }, "\u5B59\u5B50 n:", n, /*#__PURE__*/_react.default.createElement("button", {
-    onClick: function onClick() {
-      return setN(n + 1);
-    }
-  }, "+1"));
+  }, "\u5B59\u5B50 message ", props.messageForGrandSon);
 };
-var root = _client.default.createRoot(document.getElementById("root"));
+var root = _client.default.createRoot(document.getElementById('root'));
 root.render( /*#__PURE__*/_react.default.createElement(App, null));
 },{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./index.css":"src/index.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
